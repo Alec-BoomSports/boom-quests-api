@@ -1,4 +1,4 @@
-const { Quest } = require('./Quest')
+const { Quest } = require('./quest')
 
 module.exports.quests = [
   new Quest('Felia the fickle', 'A noblewoman named Felia seeks a company of adventurers to hunt down and capture the brutal murderer known as Frica the Poisonous.'),
