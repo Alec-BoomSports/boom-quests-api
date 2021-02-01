@@ -1,11 +1,13 @@
 const express = require('express')
 const { questDatabase } = require('./questDatabase')
 const { authenticateUser } = require('./auth')
+const cors = require('cors')
 
 const PORT = 8080
 const HOST = '0.0.0.0'
 const app = express()
 
+app.use(cors())
 app.use(authenticateUser)
 app.use(express.json())
 
@@ -42,7 +44,6 @@ app.patch('/quests/active/:questId', (req, res) => {
 
 app.patch('/quests/complete/:questId', (req, res) => {
   const success = questDatabase.completeQuest(req.user, req.params.questId)
-  console.log(success)
 
   if (!success) {
     return res.sendStatus(400)
